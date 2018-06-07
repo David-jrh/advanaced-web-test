@@ -1,0 +1,10 @@
+<% extend('../partials/template') %>
+    <h2>
+        <%= title %>
+    </h2>
+
+    <% (data || []).forEach(element =>{ %>
+        <p>
+            <%= element.fisk_navn %>
+        </p>
+        <% }) %>

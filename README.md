@@ -1,4 +1,4 @@
-# Avanceret Webintegration - niveau Avanceret/Expert
+<!-- # Avanceret Webintegration - niveau Avanceret/Expert -->
 
 Faget bygger oven på det vi har arbejdet med i Webintegration faget, her dykkes der dybere ned i NodeJS og JavaScriptens afkroge.
 

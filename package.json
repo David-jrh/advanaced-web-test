@@ -1,0 +1,28 @@
+{
+  "name": "avanceret-webintegration-del-1-david-jrh",
+  "version": "1.0.0",
+  "description": "<!-- # Avanceret Webintegration - niveau Avanceret/Expert -->",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon server/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rts-cmk-WI81/avanceret-webintegration-del-1-David-jrh.git"
+  },
+  "author": "david",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rts-cmk-WI81/avanceret-webintegration-del-1-David-jrh/issues"
+  },
+  "homepage": "https://github.com/rts-cmk-WI81/avanceret-webintegration-del-1-David-jrh#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-ejs-extend": "0.0.1",
+    "morgan": "^1.9.0",
+    "mysql2": "^1.5.3"
+  }
+}
