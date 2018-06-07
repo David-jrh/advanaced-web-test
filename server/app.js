@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 require('./routes/fisk.js')(app);
-
+app.use(express.static('public'));
 
 // start serveren på en port
 const port = 3000;

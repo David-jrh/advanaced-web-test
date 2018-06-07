@@ -5,6 +5,8 @@
 
     <% (data || []).forEach(element =>{ %>
         <p>
-            <%= element.fisk_navn %>
+            <a href="/fisk/<%= element.fisk_id %>">
+                <%=element.fisk_navn %>
+            </a>
         </p>
         <% }) %>
