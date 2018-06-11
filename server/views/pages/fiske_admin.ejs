@@ -1,0 +1,88 @@
+<% extend('../partials/template')%>
+
+    <h2> fiske admin</h2>
+
+    <div class="col-xs-6">
+        <h3>
+            <%= formtype %>
+        </h3>
+        <form id="fisk_form" method="post" class-inline>
+            <div class="form-group">
+                <label for="fisk_navn">Navn</label>
+                <input type="text" name="fisk_navn" value="<%= fisk.fisk_navn %>" class="form-control">
+            </div>
+            <div class="form-inline">
+                <label for="fisk_farve">farve</label>
+                <select name="fiske_farve" class="form-control" id=" fisk_farve ">
+                    <option>Vælg</option>
+                    <option <%= (fisk.fisk_farve=="Sort" ? "selected" : "") %> >Sort</option>
+                    <option <%= (fisk.fisk_farve=="Rød" ? "selected" : "") %> >Rød</option>
+                    <option <%= (fisk.fisk_farve=="Lilla" ? "selected" : "") %> >Sort</option>
+                    <option <%= (fisk.fisk_farve=="Hvid" ? "selected" : "") %> >Hvid</option>
+                </select>
+            </div>
+            <div class="form-inline">
+                <label for="fisk_han"> Han
+                    <input type="radio" name="fisk_koen" id="fisk_han" value="han" class="form-control" <%= (fisk.fisk_koen=="han" ?
+                        "checked" : "" ) %>>
+                </label>
+                <label for="fisk_hun"> Hun
+                    <input type="radio" name="fisk_koen" id="fisk_hun" value="hun" class="form-control" <%= (fisk.fisk_koen=="hun" ?
+                        "checked" : "" ) %>>
+                </label>
+            </div>
+            <button class="btn btn-succes btn-sm">GEM</button>
+            <a href="/admin/fisk" class="btn btn-sm btn-warning">Anuller</a>
+        </form>
+        <script>
+            document.querySelector('#fisk_form button').addEventListener('click', (event) => {
+                event.preventDefault();
+
+                let form = document.querySelector('#fisk_form');
+
+                form.submit();
+            })
+        </script>
+    </div>
+
+    <div class=" col-xs-6 ">
+
+        <% if(data.length > 0) { %>
+            <table>
+                <tr>
+                    <th>handling</th>
+                    <th>id</th>
+                    <th>navn</th>
+                    <th>farve</th>
+                    <th>køn</th>
+                </tr>
+                <% (data || []).forEach(element =>{ %>
+                    <tr>
+                        <td>
+                            <a href="/admin/fisk/ret/<%= element.fisk_id %>" class="btn btn-xs btn-succes">ret</a>
+                            <a href="/admin/fisk/slet/<%= element.fisk_id %>" onclick="return confirm('Er du sikker?') " class="btn btn-xs btn-danger">slet</a>
+                        </td>
+
+                        <td>
+                            <%= element.fisk_id %>
+                        </td>
+
+                        <td>
+                            <%= element.fisk_navn %>
+                        </td>
+
+                        <td>
+                            <%= element.fisk_farve %>
+                        </td>
+
+
+                        <td>
+                            <%= element.fisk_koen %>
+                        </td>
+
+
+                    </tr>
+                    <% }) %>
+            </table>
+            <% } %>
+    </div>

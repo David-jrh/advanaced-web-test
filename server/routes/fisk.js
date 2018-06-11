@@ -22,12 +22,14 @@ module.exports = (app) => {
             })
     });
 
-    app.get('/adimin', (req, res) => {
-        adimin_service.hent_alle()
+    // admin forside (viser lister)
+    app.get('/admin/fisk', (req, res) => {
+        fisk_service.hent_alle()
             .then(result => {
-                res.render('pages/adimin', {
+                res.render('pages/fiske_admin', {
                     "title": "Mine Fisk",
                     "data": result,
+                    "formtype": "Opret",
                     "fisk": {
                         "fisk_navn": "",
                         "fisk_farve": "",
@@ -37,5 +39,60 @@ module.exports = (app) => {
             })
     });
 
+    // modtager data indsæt ny fisk
+    app.post('/admin/fisk', (req, res) => {
+        fisk_service.opret_en(req.body.fisk_navn, req.body.fisk_farve, req.body.fisk_koen, )
+            .then(result => {
+                res.redirect('admin/fisk');
+            })
+            .catch(err => {
+                red.redirect('admin/fisk');
+            })
+    });
+
+    // app.post('/admin/fisk/ret/:fisk_id', (req, res) => {
+    //     admin_service.hent_alle()
+    //         .then(result => {
+    //             res.render('pages/fisk_admin', {
+    //                 "title": "Mine Fisk",
+    //                 "data": result,
+    //                 "fisk": {
+    //                     "fisk_navn": "",
+    //                     "fisk_farve": "",
+    //                     "fisk_koen": "",
+    //                 }
+    //             });
+    //         })
+    // });
+
+    // app.get('/admin/fisk/ret/:fisk_id', (req, res) => {
+    //     admin_service.hent_alle()
+    //         .then(result => {
+    //             res.render('pages/admin', {
+    //                 "title": "Mine Fisk",
+    //                 "data": result,
+    //                 "fisk": {
+    //                     "fisk_navn": "",
+    //                     "fisk_farve": "",
+    //                     "fisk_koen": "",
+    //                 }
+    //             });
+    //         })
+    // });
+
+    // app.get('/admin/fisk/slet/:fisk_id', (req, res) => {
+    //     admin_service.hent_alle()
+    //         .then(result => {
+    //             res.render('pages/admin', {
+    //                 "title": "Mine Fisk",
+    //                 "data": result,
+    //                 "fisk": {
+    //                     "fisk_navn": "",
+    //                     "fisk_farve": "",
+    //                     "fisk_koen": "",
+    //                 }
+    //             });
+    //         })
+    // });
 
 }
